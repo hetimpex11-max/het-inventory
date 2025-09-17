@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clothing Inventory Matrix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- External Libraries -->
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode/dist/JsBarcode.all.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>👕 Clothing Inventory</h1>
+
+    <!-- Add Inventory -->
+    <section>
+      <h2>Add Product</h2>
+      <input type="text" id="designNumber" placeholder="Design Number (e.g. 0099)">
+      <input type="text" id="style" placeholder="Style (e.g. T-Shirt)">
+      <input type="text" id="color" placeholder="Color (e.g. Red)">
+      <input type="text" id="size" placeholder="Size (e.g. M)">
+      <input type="number" id="pieces" placeholder="Pieces">
+      <button onclick="addInventory()">Add & Generate Codes</button>
+      <div id="codes"></div>
+    </section>
+
+    <!-- QR Scanner -->
+    <section>
+      <h2>Scan QR / Barcode</h2>
+      <div id="reader"></div>
+    </section>
+
+    <!-- Manual Adjust (hidden behind button) -->
+    <section>
+      <button class="secondary" onclick="toggleManualForm()">Manual Adjust (Advanced)</button>
+      <div id="manualForm" style="display:none; margin-top:10px;">
+        <input type="text" id="manualDesign" placeholder="Design Number">
+        <input type="text" id="manualStyle" placeholder="Style">
+        <input type="text" id="manualColor" placeholder="Color">
+        <input type="text" id="manualSize" placeholder="Size">
+        <input type="number" id="manualStock" placeholder="New Stock">
+        <button onclick="manualAdjust()">Update Stock</button>
+      </div>
+    </section>
+
+    <!-- Inventory List -->
+    <section>
+      <h2>Inventory List</h2>
+      <ul id="inventoryList"></ul>
+    </section>
+  </div>
+</body>
+</html>
